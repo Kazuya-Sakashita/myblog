@@ -1,0 +1,17 @@
+<h2>
+<%= link_to 'index', root_path, class: 'header-menu' %>
+
+My Posts Delete History
+</h2>
+
+<ul>
+<% @posts.each do |post| %>
+<% if post.del_flag == 1%>
+<li>
+<%= link_to post.title, show_path(post) %>
+<%= link_to "[Edit]", edit_path(post), class: 'command' %>
+<%= link_to "[Delete]", destroy_path(post), class: 'command', data:{ confirm: 'Sure? '} %>
+</li>
+<% end %>
+<% end %>
+</ul>
