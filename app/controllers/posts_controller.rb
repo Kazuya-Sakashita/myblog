@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: 'desc')
   end
- 
+
 
   def show
     @post = Post.find_by(id: params[:id])
-    
   end
+
   def edit
     @post = Post.find_by(id: params[:id])
   end
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.del_flag = 0
-    
+
     if @post.save
       redirect_to root_path
     else
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
         redirect_to root_path
       else
         render:edit
-        
+
       end
 
     end
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
          render :index
       end
     end
-  
+
   private
   def post_params
     params.require(:post).permit(:title, :body)
